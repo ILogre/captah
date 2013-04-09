@@ -1,0 +1,9 @@
+grammar fr.uns.i2s.rainbow.captah.dsl.CaPtah with org.eclipse.xtext.common.Terminals
+
+generate caPtah "http://www.uns.fr/i2s/rainbow/captah/dsl/CaPtah"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
