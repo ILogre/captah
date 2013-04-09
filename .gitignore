@@ -4,3 +4,6 @@
 *.jar
 *.war
 *.ear
+*.classpath
+
+DSL/fr.uns.i3s.rainbow.captah.dsl.*
