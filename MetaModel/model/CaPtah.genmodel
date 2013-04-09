@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fr.uns.i3s.rainbow.captah.mm/src" modelPluginID="fr.uns.i3s.rainbow.captah.mm"
+    modelName="CaPtah" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
+    copyrightFields="false">
+  <foreignModel>CaPtah.ecore</foreignModel>
+  <genPackages prefix="Ptah" disposableProviderFactory="true" ecorePackage="CaPtah.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CaPtah.ecore#//DataEncoding">
+      <genEnumLiterals ecoreEnumLiteral="CaPtah.ecore#//DataEncoding/CSV"/>
+      <genEnumLiterals ecoreEnumLiteral="CaPtah.ecore#//DataEncoding/SENML"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CaPtah.ecore#//SensorType">
+      <genEnumLiterals ecoreEnumLiteral="CaPtah.ecore#//SensorType/NUMERICAL_T"/>
+      <genEnumLiterals ecoreEnumLiteral="CaPtah.ecore#//SensorType/BOOLEAN_T"/>
+      <genEnumLiterals ecoreEnumLiteral="CaPtah.ecore#//SensorType/STRING_T"/>
+    </genEnums>
+    <genClasses ecoreClass="CaPtah.ecore#//Sensor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CaPtah.ecore#//Sensor/sensorUrl"/>
+    </genClasses>
+    <genClasses ecoreClass="CaPtah.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CaPtah.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="CaPtah.ecore#//Component">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CaPtah.ecore#//Component/ports"/>
+    </genClasses>
+    <genClasses ecoreClass="CaPtah.ecore#//Widget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CaPtah.ecore#//Widget/pattern"/>
+    </genClasses>
+    <genClasses ecoreClass="CaPtah.ecore#//Instance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CaPtah.ecore#//Instance/type"/>
+    </genClasses>
+    <genClasses ecoreClass="CaPtah.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CaPtah.ecore#//Model/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="CaPtah.ecore#//Composite">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CaPtah.ecore#//Composite/instances"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CaPtah.ecore#//Composite/connectors"/>
+    </genClasses>
+    <genClasses ecoreClass="CaPtah.ecore#//Connector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CaPtah.ecore#//Connector/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CaPtah.ecore#//Connector/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CaPtah.ecore#//Connector/port"/>
+    </genClasses>
+    <genClasses ecoreClass="CaPtah.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CaPtah.ecore#//Port/portType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CaPtah.ecore#//Port/portEncoding"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CaPtah.ecore#//Port/myConnection"/>
+    </genClasses>
+    <genClasses ecoreClass="CaPtah.ecore#//Dashboard"/>
+  </genPackages>
+</genmodel:GenModel>
