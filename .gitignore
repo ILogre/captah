@@ -7,3 +7,4 @@
 *.classpath
 
 DSL/fr.uns.i3s.rainbow.captah.dsl.*
+fr.uns.i3s.rainbow.captah.mm.*
