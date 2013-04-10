@@ -4,3 +4,5 @@
 src/fr/uns/i3s/rainbow/captah/dsl/formatting
 src/fr/uns/i3s/rainbow/captah/dsl/scoping
 src/fr/uns/i3s/rainbow/captah/dsl/validation
+/test.captah
+/captah.xmi

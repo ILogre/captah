@@ -20,8 +20,8 @@ import com.google.inject.Injector;
  */
 public class CaPtahStandaloneSetup extends CaPtahStandaloneSetupGenerated{
 
-	public final static String OUTPUT_PATH = "ptah.xmi";
-	public final static String INPUT_PATH = "test.ptah";
+	public final static String OUTPUT_PATH = "captah.xmi";
+	public final static String INPUT_PATH = "test.captah";
 	
 	public static void generate() {
 	
@@ -96,9 +96,9 @@ public class CaPtahStandaloneSetup extends CaPtahStandaloneSetupGenerated{
 		org.eclipse.xtext.resource.IResourceServiceProvider serviceProvider = injector
 				.getInstance(org.eclipse.xtext.resource.IResourceServiceProvider.class);
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
-				"ptah", resourceFactory);
+				"captah", resourceFactory);
 		org.eclipse.xtext.resource.IResourceServiceProvider.Registry.INSTANCE
-				.getExtensionToFactoryMap().put("ptah", serviceProvider);
+				.getExtensionToFactoryMap().put("captah", serviceProvider);
 
 	}
 	
