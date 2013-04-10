@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+    <extension
+            point="org.eclipse.ui.editors">
+        <editor
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            default="true"
+            extensions="captah"
+            id="fr.uns.i3s.rainbow.captah.dsl.CaPtah"
+            name="CaPtah Editor">
+        </editor>
+    </extension>
+    <extension
+        point="org.eclipse.ui.handlers">
+        <handler
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+            <activeWhen>
+                <reference
+                    definitionId="fr.uns.i3s.rainbow.captah.dsl.CaPtah.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+        <handler
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="fr.uns.i3s.rainbow.captah.dsl.CaPtah.validate">
+         <activeWhen>
+            <reference
+                    definitionId="fr.uns.i3s.rainbow.captah.dsl.CaPtah.Editor.opened">
+            </reference>
+         </activeWhen>
+      </handler>
+    </extension>
+    <extension point="org.eclipse.core.expressions.definitions">
+        <definition id="fr.uns.i3s.rainbow.captah.dsl.CaPtah.Editor.opened">
+            <and>
+                <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+                <with variable="activeEditor">
+                    <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
+                        value="fr.uns.i3s.rainbow.captah.dsl.CaPtah" 
+                        forcePluginActivation="true"/>
+                </with>        
+            </and>
+        </definition>
+    </extension>
+    <extension
+            point="org.eclipse.ui.preferencePages">
+        <page
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="fr.uns.i3s.rainbow.captah.dsl.CaPtah"
+            name="CaPtah">
+            <keywordReference id="fr.uns.i3s.rainbow.captah.dsl.ui.keyword_CaPtah"/>
+        </page>
+        <page
+            category="fr.uns.i3s.rainbow.captah.dsl.CaPtah"
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="fr.uns.i3s.rainbow.captah.dsl.CaPtah.coloring"
+            name="Syntax Coloring">
+            <keywordReference id="fr.uns.i3s.rainbow.captah.dsl.ui.keyword_CaPtah"/>
+        </page>
+        <page
+            category="fr.uns.i3s.rainbow.captah.dsl.CaPtah"
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="fr.uns.i3s.rainbow.captah.dsl.CaPtah.templates"
+            name="Templates">
+            <keywordReference id="fr.uns.i3s.rainbow.captah.dsl.ui.keyword_CaPtah"/>
+        </page>
+    </extension>
+    <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="fr.uns.i3s.rainbow.captah.dsl.CaPtah"
+            name="CaPtah">
+            <keywordReference id="fr.uns.i3s.rainbow.captah.dsl.ui.keyword_CaPtah"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+    <extension
+        point="org.eclipse.ui.keywords">
+        <keyword
+            id="fr.uns.i3s.rainbow.captah.dsl.ui.keyword_CaPtah"
+            label="CaPtah"/>
+    </extension>
+    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="Trigger expensive validation"
+            id="fr.uns.i3s.rainbow.captah.dsl.CaPtah.validate"
+            name="Validate">
+      </command>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI="popup:#TextEditorContext?after=group.edit">
+             <command
+                 commandId="fr.uns.i3s.rainbow.captah.dsl.CaPtah.validate"
+                 style="push"
+                 tooltip="Trigger expensive validation">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="fr.uns.i3s.rainbow.captah.dsl.CaPtah.Editor.opened">
+                </reference>
+            </visibleWhen>
+         </command>  
+         </menuContribution>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+                	<reference definitionId="fr.uns.i3s.rainbow.captah.dsl.CaPtah.Editor.opened">
+                	</reference>
+            	</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+	    <handler
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            commandId="org.eclipse.xtext.ui.editor.FindReferences">
+            <activeWhen>
+                <reference
+                    definitionId="fr.uns.i3s.rainbow.captah.dsl.CaPtah.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+    </extension>   
+
+<!-- adding resource factories -->
+
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="captah">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            uriExtension="captah">
+        </resourceServiceProvider>
+    </extension>
+
+
+    <!-- marker definitions for fr.uns.i3s.rainbow.captah.dsl.CaPtah -->
+    <extension
+            id="captah.check.fast"
+            name="CaPtah Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.fast"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="captah.check.normal"
+            name="CaPtah Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.normal"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="captah.check.expensive"
+            name="CaPtah Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.expensive"/>
+        <persistent value="true"/>
+    </extension>
+
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="fr.uns.i3s.rainbow.captah.dsl.CaPtah.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Open the quick outline."
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="fr.uns.i3s.rainbow.captah.dsl.CaPtah.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+
+  <extension point="org.eclipse.compare.contentViewers">
+    <viewer id="fr.uns.i3s.rainbow.captah.dsl.CaPtah.compare.contentViewers"
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="captah">
+    </viewer>
+  </extension>
+  <extension point="org.eclipse.compare.contentMergeViewers">
+    <viewer id="fr.uns.i3s.rainbow.captah.dsl.CaPtah.compare.contentMergeViewers"
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="captah" label="CaPtah Compare">
+     </viewer>
+  </extension>
+  <extension point="org.eclipse.ui.editors.documentProviders">
+    <provider id="fr.uns.i3s.rainbow.captah.dsl.CaPtah.editors.documentProviders"
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+            extensions="captah">
+    </provider>
+  </extension>
+    <!-- quickfix marker resolution generator for fr.uns.i3s.rainbow.captah.dsl.CaPtah -->
+    <extension
+            point="org.eclipse.ui.ide.markerResolution">
+        <markerResolutionGenerator
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="fr.uns.i3s.rainbow.captah.dsl.ui.captah.check.fast">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+        <markerResolutionGenerator
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="fr.uns.i3s.rainbow.captah.dsl.ui.captah.check.normal">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+        <markerResolutionGenerator
+            class="fr.uns.i3s.rainbow.captah.dsl.ui.CaPtahExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="fr.uns.i3s.rainbow.captah.dsl.ui.captah.check.expensive">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+    </extension>
+
+</plugin>
