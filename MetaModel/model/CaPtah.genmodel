@@ -4,7 +4,7 @@
     modelName="CaPtah" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
     copyrightFields="false">
   <foreignModel>CaPtah.ecore</foreignModel>
-  <genPackages prefix="Ptah" disposableProviderFactory="true" ecorePackage="CaPtah.ecore#/">
+  <genPackages prefix="Captah" disposableProviderFactory="true" ecorePackage="CaPtah.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CaPtah.ecore#//DataEncoding">
       <genEnumLiterals ecoreEnumLiteral="CaPtah.ecore#//DataEncoding/CSV"/>
       <genEnumLiterals ecoreEnumLiteral="CaPtah.ecore#//DataEncoding/SENML"/>

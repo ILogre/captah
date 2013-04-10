@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
-import ptah.PtahFactory;
-import ptah.impl.PtahPackageImpl;
+import captah.CaptahFactory;
+import captah.impl.CaptahPackageImpl;
 
 import com.google.inject.Injector;
 /**
@@ -57,7 +57,7 @@ public class CaPtahStandaloneSetup extends CaPtahStandaloneSetupGenerated{
 	}
 	
 	public Injector createInjectorAndDoEMFRegistration() {
-		PtahPackageImpl.init();
+		CaptahPackageImpl.init();
 		org.eclipse.xtext.common.TerminalsStandaloneSetup.doSetup();
 
 		// register default ePackages
@@ -87,7 +87,7 @@ public class CaPtahStandaloneSetup extends CaPtahStandaloneSetupGenerated{
 	public void register(Injector injector) {
 
 		if (!EPackage.Registry.INSTANCE.containsKey("TargetmodelFactory")) {
-			EPackage.Registry.INSTANCE.put("TargetmodelFactory", PtahFactory.eINSTANCE);
+			EPackage.Registry.INSTANCE.put("TargetmodelFactory", CaptahFactory.eINSTANCE);
 		}
 
 		// Copied from NatisStandaloneSetupGenerated:
