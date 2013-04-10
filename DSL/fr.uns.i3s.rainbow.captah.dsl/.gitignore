@@ -1,5 +1,4 @@
 /src-gen
-/xtend-gen
 /bin
 src/fr/uns/i3s/rainbow/captah/dsl/formatting
 src/fr/uns/i3s/rainbow/captah/dsl/scoping
